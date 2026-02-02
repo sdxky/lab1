@@ -29,6 +29,5 @@ bin/
 .DS_Store
 
 idea/
-.iml
+lab1.1.iml
 .idea
-/.iml
