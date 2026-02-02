@@ -3,7 +3,7 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        task12();
+        task15();
 
     }
 
@@ -206,14 +206,8 @@ public class Main {
     }
 
     private static void task11() {
-        ArrayList<String> countries1 = new ArrayList<>();
-        countries1.add("Great Britain");
-        countries1.add("USA");
-        countries1.add("China");
-        ArrayList<String> countries2 = new ArrayList<>();
-        countries2.add("USA");
-        countries2.add("Kyrgyzstan");
-        countries2.add("Russia");
+        ArrayList<String> countries1 = new ArrayList<>(Arrays.asList("Great Britain","USA","China"));
+        ArrayList<String> countries2 = new ArrayList<>(Arrays.asList("USA", "Kyrgyzstan", "Russia"));
 
         ArrayList<String> commonCountries = new ArrayList<>();
 
@@ -231,7 +225,7 @@ public class Main {
     private static void task12() {
         ArrayList<String> names = new ArrayList<>(Arrays.asList("John", "Julie", "Eldar", "Azamat"));
         for (int i = 0; i < names.size(); i++) {
-            if(names.get(i).length() % 2 == 0){
+            if (names.get(i).length() % 2 == 0) {
                 names.remove(i);
             }
         }
@@ -239,6 +233,136 @@ public class Main {
     }
 
     private static void task13() {
+        ArrayList<String> songs = new ArrayList<>(Arrays.asList("Shape of You", "Believer", "Fix You", "Yesterday", "U"));
 
+        String shortest = songs.getFirst();
+
+        for (String song : songs) {
+            if (song.length() < shortest.length()) {
+                shortest = song;
+            }
+        }
+
+        System.out.println("Shortest song title: " + shortest);
+        System.out.println("Length: " + shortest.length());
+    }
+
+    private static void task14() {
+        ArrayList<String> words = new ArrayList<>(Arrays.asList("Apple", "Banana", "Orange", "Grape", "Melon"));
+
+        for (int i = 0; i < words.size(); i++) {
+            String word = words.get(i);
+
+            word = word.replaceAll("[AEIOUaeiou]", "*");
+
+            words.set(i, word);
+        }
+
+        System.out.println(words);
+    }
+
+
+    private static void task15() {
+        ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8));
+
+        ArrayList<Integer> evenNumbers = new ArrayList<>();
+        ArrayList<Integer> oddNumbers = new ArrayList<>();
+
+        for (int num : numbers) {
+            if (num % 2 == 0) {
+                evenNumbers.add(num);
+            } else {
+                oddNumbers.add(num);
+            }
+        }
+
+        System.out.println("Even numbers: " + evenNumbers);
+        System.out.println("Odd numbers: " + oddNumbers);
+    }
+
+
+    private static void task16() {
+        ArrayList<String> days = new ArrayList<>(Arrays.asList("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"));
+
+        int rotateBy = 2;
+
+        for (int i = 0; i < rotateBy; i++) {
+            String last = days.remove(days.size() - 1);
+            days.add(0, last);
+        }
+
+        System.out.println("Rotated list: " + days);
+    }
+
+    private static void task17() {
+        ArrayList<String> students = new ArrayList<>(
+                Arrays.asList("John", null, "Alice", null, "Bob", "Emma", null)
+        );
+
+        for (int i = 0; i < students.size(); i++) {
+            if (students.get(i) == null) {
+                students.remove(i);
+                i--;
+            }
+        }
+
+        System.out.println(students);
+    }
+    private static void task18() {
+        ArrayList<String> movies = new ArrayList<>(
+                Arrays.asList("Inception", "Titanic", "Interstellar", "The Lord of the Rings: The Return of the King", "Avatar"));
+
+        String largest = "";
+        String secondLargest = "";
+
+        for (String movie : movies) {
+            if (movie.length() > largest.length()) {
+                secondLargest = largest;
+                largest = movie;
+            } else if (movie.length() > secondLargest.length()
+                    && movie.length() < largest.length()) {
+                secondLargest = movie;
+            }
+        }
+
+        System.out.println("Second largest movie title: " + secondLargest);
+        System.out.println("Length: " + secondLargest.length());
+    }
+    private static void task19() {
+        ArrayList<String> fruits = new ArrayList<>(
+                Arrays.asList("Apple", "Banana", "Orange", "Kiwi", "Mango")
+        );
+
+        ArrayList<Integer> lengths = new ArrayList<>();
+
+        for (String fruit : fruits) {
+            lengths.add(fruit.length());
+        }
+
+        System.out.println(lengths);
+    }
+
+    private static void task20() {
+        ArrayList<ArrayList<String>> departments = new ArrayList<>();
+
+        ArrayList<String> itDept = new ArrayList<>(Arrays.asList("John", "Alice", "Eldar"));
+
+        ArrayList<String> hrDept = new ArrayList<>(Arrays.asList("Emma", "Sophia"));
+
+        ArrayList<String> salesDept = new ArrayList<>(Arrays.asList("Michael", "Daniel", "Anna"));
+
+        departments.add(itDept);
+        departments.add(hrDept);
+        departments.add(salesDept);
+
+        for (int i = 0; i < departments.size(); i++) {
+            System.out.println("Department " + (i + 1) + ":");
+
+            ArrayList<String> employees = departments.get(i);
+            for (String name : employees) {
+                System.out.println(" - " + name);
+            }
+        }
     }
 }
+
